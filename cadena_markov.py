@@ -1,31 +1,5 @@
 import numpy as np
 
-"""
-La Universidad Austral de Chile cuenta con un sistema distribuido de servidores ubicados
-en tres de sus principales campus: Miraflores, La Isla Teja y Puerto Montt. Estos servidores
-gestionan las solicitudes de los usuarios en las diversas plataformas digitales de la
-universidad, tales como su sitio web, sistema de matrícula y otros servicios en línea.
-Para asegurar que la carga de trabajo se distribuye de manera eficiente y que ninguno de
-los servidores se sobrecargue, se ha implementado un sistema de balanceo de carga.
-
-Servidor de Miraflores tiene un 80% de probabilidad de conservar una solicitud, un 10%
-de enviarla al Servidor de La Isla Teja y un 10% de enviarla al Servidor de Puerto Montt.
-
-Servidor de La Isla Teja tiene un 10% de probabilidad de conservar una solicitud, un 10% de
-enviarla al Servidor de Miraflores y un 80% de enviarla al Servidor de Puerto Montt.
-
-Servidor de Puerto Montt tiene un 70% de probabilidad de conservar una solicitud, un 15%
-de enviarla al Servidor de Miraflores y un 15% de enviarla al Servidor de La Isla Teja.
-
-matriz de transicion:
-| 0.80 0.10 0.10 |
-| 0.10 0.10 0.80 |
-| 0.70 0.15 0.15 |
-
-Pregunta:
-¿Cuál es la distribución estacionaria del tráfico de solicitudes entre los tres servidores?
-"""
-
 
 def valida_matriz_transicion(matriz):
     """
@@ -60,19 +34,25 @@ def main():
     Función principal del programa.
     """
     
-    # Solicitar la matriz de transición
+    # Definir la matriz de transición
     matriz_transitoria = np.array([
         [0.80, 0.10, 0.10],
         [0.10, 0.10, 0.80],
         [0.70, 0.15, 0.15]
     ])
+
+    dicc_servidores = {
+        0: "Miraflores",
+        1: "Isla Teja",
+        2: "Puerto Montt"
+    }
     
     print("Matriz de transición usada:")
     print(matriz_transitoria)
     
     # Validar la matriz de transición
     if not valida_matriz_transicion(matriz_transitoria):
-        print("Error: Las filas de la matriz de transición no suman 1.")
+        print("Error: Una o más de las filas de distribución de probabilidad no suman 1.")
         return
     
     # Calcular la distribución estacionaria
@@ -86,7 +66,7 @@ def main():
     # Mostrar resultados
     print("Distribución estacionaria calculada:")
     print(dist_estacionaria)
-    print(f"El estado con mayor probabilidad estacionaria es el estado {np.argmax(dist_estacionaria)}.")
+    print(f"El servidor con mayor probabilidad estacionaria es {dicc_servidores[np.argmax(dist_estacionaria)]}.")
 
 if __name__ == "__main__":
     main()
