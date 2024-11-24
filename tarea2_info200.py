@@ -2,20 +2,20 @@ import numpy as np
 
 """
 La Universidad Austral de Chile cuenta con un sistema distribuido de servidores ubicados
-en tres de sus principales campus: Miraflores, La Teja y Puerto Montt. Estos servidores
+en tres de sus principales campus: Miraflores, La Isla Teja y Puerto Montt. Estos servidores
 gestionan las solicitudes de los usuarios en las diversas plataformas digitales de la
 universidad, tales como su sitio web, sistema de matrícula y otros servicios en línea.
 Para asegurar que la carga de trabajo se distribuye de manera eficiente y que ninguno de
 los servidores se sobrecargue, se ha implementado un sistema de balanceo de carga.
 
 Servidor de Miraflores tiene un 80% de probabilidad de conservar una solicitud, un 10%
-de enviarla al Servidor de La Teja y un 10% de enviarla al Servidor de Puerto Montt.
+de enviarla al Servidor de La Isla Teja y un 10% de enviarla al Servidor de Puerto Montt.
 
-Servidor de La Teja tiene un 10% de probabilidad de conservar una solicitud, un 10% de
+Servidor de La Isla Teja tiene un 10% de probabilidad de conservar una solicitud, un 10% de
 enviarla al Servidor de Miraflores y un 80% de enviarla al Servidor de Puerto Montt.
 
 Servidor de Puerto Montt tiene un 70% de probabilidad de conservar una solicitud, un 15%
-de enviarla al Servidor de Miraflores y un 15% de enviarla al Servidor de La Teja.
+de enviarla al Servidor de Miraflores y un 15% de enviarla al Servidor de La Isla Teja.
 
 matriz de transicion:
 | 0.80 0.10 0.10 |
